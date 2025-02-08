@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   return (
     <nav className="bg-gray-800 p-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
@@ -27,4 +27,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
