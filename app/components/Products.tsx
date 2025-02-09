@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type Product = {
   id: number;
@@ -13,6 +13,11 @@ type ProductsProps = {
 
 export default function Products({ products }: ProductsProps) {
   const [cart, setCart] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(storedCart);
+  }, []);
 
   const addToCart = (product: Product) => {
     setCart([...cart, product]);
