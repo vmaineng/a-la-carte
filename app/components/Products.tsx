@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
 
 type Product = {
   id: number;
@@ -12,22 +12,13 @@ type ProductsProps = {
 };
 
 export default function Products({ products }: ProductsProps) {
-  const [cart, setCart] = useState<Product[]>([]);
+  const { addToCart } = useCart();
 
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(storedCart);
-  }, []);
-
-  const addToCart = (product: Product) => {
-    setCart([...cart, product]);
-  };
-
-  const totalPrice = cart.reduce((sum, product) => sum + product.price, 0);
+  // const totalPrice = cart.reduce((sum, product) => sum + product.price, 0);
 
   return (
-    <div className="flex flex-col items-center gap-16">
-      <h2> Cart Total:</h2>
+    <div className="flex flex-col items-center gap-4">
+      {/* <h2> Cart Total:</h2>
       {cart.length === 0 ? (
         <p> Your cart is empty</p>
       ) : (
@@ -39,7 +30,7 @@ export default function Products({ products }: ProductsProps) {
           ))}
         </ul>
       )}
-      <h3> Total: ${totalPrice.toFixed(2)}</h3>
+      <h3> Total: ${totalPrice.toFixed(2)}</h3> */}
       <div>
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
