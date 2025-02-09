@@ -1,5 +1,5 @@
-import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { loader as productsLoader } from "./api.products";
 import Products from "~/components/Products";
 
 type Product = {
@@ -14,13 +14,9 @@ type LoaderData = {
 };
 
 // Fetch products from an API or database
-export async function loader() {
-  const response = await fetch("/api/products");
-  const products = await response.json();
-  return json({ products });
-}
+export const loader = productsLoader;
 
 export default function ProductsPage() {
-  const { products } = useLoaderData<typeof loader>();
+  const { products } = useLoaderData<LoaderData>();
   return <Products products={products} />;
 }

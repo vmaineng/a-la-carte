@@ -1,7 +1,6 @@
 import { json } from '@remix-run/node';
 
 export function loader() {
-
   const products = [
       {
         "id": 1,
