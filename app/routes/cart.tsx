@@ -1,5 +1,5 @@
-const Cart: React.FC = () => {
-  return <div>Cart</div>;
-};
+import Cart from "~/components/Cart";
 
-export default Cart;
+export default function CartPage() {
+  return <Cart />;
+}

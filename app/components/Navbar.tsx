@@ -1,18 +1,22 @@
 import { Link } from "@remix-run/react";
+import { useEffect } from "react";
 import { useCart } from "~/context/CartContext";
 
 const Navbar: React.FC = () => {
   const { cart } = useCart();
-  const totalItems = cart.reduce((sum, item) => sum + item.price, 0);
+  const totalItems = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
+  useEffect(() => {
+    console.log("Total Items:", totalItems);
+  }, [totalItems]); // Runs whenever totalItems changes
+
   return (
     <nav className="bg-gray-800 p-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
-        {/* Logo or Brand */}
         <Link to="/" className="text-xl font-bold text-white">
           MyStore
         </Link>
 
-        {/* Navigation Links */}
         <div className="flex space-x-4">
           <Link
             to="/home"

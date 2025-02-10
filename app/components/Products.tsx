@@ -14,23 +14,8 @@ type ProductsProps = {
 export default function Products({ products }: ProductsProps) {
   const { addToCart } = useCart();
 
-  // const totalPrice = cart.reduce((sum, product) => sum + product.price, 0);
-
   return (
     <div className="flex flex-col items-center gap-4">
-      {/* <h2> Cart Total:</h2>
-      {cart.length === 0 ? (
-        <p> Your cart is empty</p>
-      ) : (
-        <ul>
-          {cart.map((item, index) => (
-            <li key={index}>
-              {item.name} - ${item.price.toFixed(2)}
-            </li>
-          ))}
-        </ul>
-      )}
-      <h3> Total: ${totalPrice.toFixed(2)}</h3> */}
       <div>
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
